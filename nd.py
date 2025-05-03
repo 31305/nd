@@ -2,18 +2,22 @@
 import sys
 import curses
 import random
+from os import system
 nds=open('nds','r').read().split('\n')
 s=curses.initscr()
+curses.noecho()
 k=-1
 if len(sys.argv)>1:
     k=int(sys.argv[1])
 while 1:
     p=s.getch()
-    if p=='n':break
+    if p==110:break
     if k==-1:
-        l=nds[random.randint(0,len(nds))]
+        l=nds[random.randint(0,len(nds)-1)]
     else:
-        if random.randint(0,2):
+        if random.randint(0,1):
             l=nds[k]
-        else: l=nds[random.randint(0,len(nds)-1)]
+        else: l=nds[random.randint(0,len(nds)-2)]
+    system('echo '+l.replace(',',' ')+' |../sv/sv 13')
+curses.echo()
 curses.endwin()
