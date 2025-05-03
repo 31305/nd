@@ -25,4 +25,3 @@ while 1:
     system('echo '+l.replace(',',' ')+' |../sv/sv 13')
 curses.echo()
 curses.endwin()
-print(nds)
