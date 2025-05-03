@@ -4,6 +4,10 @@ import curses
 import random
 from os import system
 nds=open('nds','r').read().split('\n')
+for k in range(0,len(nds)):
+    if nds[k]=='':
+        nds=nds[:-1]
+        break
 s=curses.initscr()
 curses.noecho()
 k=-1
@@ -21,3 +25,4 @@ while 1:
     system('echo '+l.replace(',',' ')+' |../sv/sv 13')
 curses.echo()
 curses.endwin()
+print(nds)
